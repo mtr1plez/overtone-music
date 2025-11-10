@@ -1,0 +1,17 @@
+  music-service:
+    build: ./music-service
+    container_name: music-service
+    ports:
+      - "8083:8000"
+    depends_on:
+      - music-mongo
+    networks:
+      - overtone
+
+  music-mongo:
+    image: mongo:6.0
+    container_name: music-mongo
+    ports:
+      - "27020:27017"
+    networks:
+      - overtone
