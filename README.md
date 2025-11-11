@@ -94,8 +94,83 @@ Additionally, the MongoDB Atlas Network Access List was configured to allow conn
 
 The `/health/db` endpoint executes a safe `client.admin.command('ping')` request to validate live database connectivity. If the check fails, it returns HTTP 500 with diagnostic logging, meeting assignment reliability and error-handling criteria.
 
+## 💻 Local Setup and Run Instructions
+
+Follow these steps to set up and run the service locally using a virtual environment or Docker.
+
+### Prerequisites
+
+* Python 3.11+
+* Docker (for containerized setup)
+
+### 1. Local Development Setup (Using Python)
+
+Clone the repository:
+
+```bash
+git clone [ВСТАВЬТЕ ССЫЛКУ НА РЕПО ЗДЕСЬ]
+cd music-service
+```
+
+Create and activate a virtual environment:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Linux/macOS
+# venv\Scripts\activate   # On Windows
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Configure Environment Variables:
+
+Create a file named `.env` in the root directory or export variables directly:
+
+```bash
+export MONGO_URI="mongodb+srv://user:password@cluster0.abc.mongodb.net/?appName=Cluster0"
+export DB_NAME="music"
+export JWT_SECRET="your_very_long_secret_key"
+```
+
+Replace the example credentials with your real MongoDB Atlas connection details.
+
+Run the application:
+
+```bash
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+The API will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+### 2. Local Docker Setup
+
+Build the Docker image:
+
+```bash
+docker build -t overtone-music-service .
+```
+
+Run the container with environment variables:
+
+```bash
+docker run -d \
+  -p 8000:8000 \
+  -e MONGO_URI="mongodb+srv://user:password@cluster0.abc.mongodb.net/?appName=Cluster0" \
+  -e DB_NAME="music" \
+  -e JWT_SECRET="your_very_long_secret_key" \
+  overtone-music-service
+```
+
+API will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+
 DB Screenshots:
 <img width="1895" height="775" alt="image" src="https://github.com/user-attachments/assets/a551b367-453f-40b6-90e3-f83564012516" />
 <img width="1898" height="796" alt="image" src="https://github.com/user-attachments/assets/21bda73c-5491-46bf-9e9a-232bf6a07897" />
+
 
 
