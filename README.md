@@ -93,3 +93,9 @@ Additionally, the MongoDB Atlas Network Access List was configured to allow conn
 ## 🏥 Health Endpoint Implementation
 
 The `/health/db` endpoint executes a safe `client.admin.command('ping')` request to validate live database connectivity. If the check fails, it returns HTTP 500 with diagnostic logging, meeting assignment reliability and error-handling criteria.
+
+DB Screenshots:
+<img width="1895" height="775" alt="image" src="https://github.com/user-attachments/assets/a551b367-453f-40b6-90e3-f83564012516" />
+<img width="1898" height="796" alt="image" src="https://github.com/user-attachments/assets/21bda73c-5491-46bf-9e9a-232bf6a07897" />
+
+
